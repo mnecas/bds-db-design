@@ -171,7 +171,6 @@ CREATE UNIQUE INDEX `shift_id_UNIQUE` ON `bpc-bds`.`shift` (`shift_id` ASC);
 CREATE TABLE IF NOT EXISTS `bpc-bds`.`user_has_address` (
   `person_id` INT NOT NULL,
   `address_id` INT NOT NULL,
-  `type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`person_id`, `address_id`),
   CONSTRAINT `fk_user_has_address_user`
     FOREIGN KEY (`person_id`)
