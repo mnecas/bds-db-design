@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS bpc_bds.address (
   city VARCHAR(45) NOT NULL,
   street VARCHAR(45) NOT NULL,
   street_number INT NOT NULL,
-  zip INT NOT NULL,
+  zip VARCHAR(20) NOT NULL,
   description VARCHAR(45) NULL,
   floor INT NULL,
   PRIMARY KEY (address_id));
