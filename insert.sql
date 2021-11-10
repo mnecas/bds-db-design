@@ -535,6 +535,7 @@ VALUES
  (2, 3, 123),
  (3, 1, 312),
  (4, 2, 150),
+ (1, 3, 150),
  (5, 3, 320)
 ;
 
@@ -555,6 +556,10 @@ VALUES
  (11, 1, 1, NULL, 1, 'Nedoporucuji'),
  (11, 2, 1, NULL, 2, 'Nedoporucuji nechutnalo'),
  (11, 1, 2, NULL, 5, 'Bylo super jidlo'),
+ (11, 1, 2, NULL, 4, 'Bylo super jidlo'),
+ (11, 1, 2, NULL, 4, 'Bylo super jidlo'),
+ (11, 1, 2, NULL, 4, 'Bylo super jidlo'),
+ (11, 1, 3, NULL, 4, 'Bylo super jidlo'),
  (13, NULL, NULL, 1, 5, 'Sympatak'),
  (13, NULL, NULL, 2, 4, NULL),   
  (15, 3, 1, NULL, 4, NULL),
@@ -662,3 +667,5 @@ VALUES
 
 -- Modify the database from the first project assignment to improve integrity constraints (e.g., reduce the size for varchar columns)
 -- Set cascading, explain places where you used cascading and why?
+
+SELECT p.username, d.name ,AVG(r.rating), COUNT(DISTINCT (r.restaurant_id)) FROM bpc_bds.person AS p LEFT JOIN bpc_bds.review AS r ON p.person_id=r.person_id LEFT JOIN bpc_bds.dish_has_restaurant AS dhr ON r.dish_id=dhr.dish_id LEFT JOIN bpc_bds.dish as d ON d.dish_id=dhr.dish_id WHERE r.dish_id IS NOT NULL GROUP BY r.dish_id, p.username, d.name HAVING AVG(r.rating)>3 ORDER BY AVG(r.rating) DESC;
